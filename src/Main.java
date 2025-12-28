@@ -1,15 +1,24 @@
-//TIP Para <b>executar</b> o código, pressione <shortcut actionId="Run"/> ou
-// clique no ícone <icon src="AllIcons.Actions.Execute"/> no gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Pressione <shortcut actionId="ShowIntentionActions"/> com seu caret no texto destacado
-        // para ver como IntelliJ IDEA sugere corrigi-lo.
-        System.out.printf("Hello and welcome!");
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.SQLOutput;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Pressione <shortcut actionId="Debug"/> para iniciar a depuração do seu código. Definimos um ponto de interrupção <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-            // para você, mas você sempre pode adicionar mais pressionando <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+
+    public static void main(String[] args) {
+
+        String path = "C:\\Windows\\Temp\\in.txt";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line = br.readLine();
+
+            while (line != null) {
+                System.out.println(line);
+                line = br.readLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error:" + e.getMessage());
+
         }
     }
 }
