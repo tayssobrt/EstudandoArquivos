@@ -1,24 +1,21 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class Main {
-
     public static void main(String[] args) {
 
-        String path = "C:\\Windows\\Temp\\in.txt";
+        String[] lines = new String[] {"Good morning", "Good Afternoon", "Good night"};
 
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = br.readLine();
-
-            while (line != null) {
-                System.out.println(line);
-                line = br.readLine();
+        String path = "c:\\windows\\temp\\out.txt";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))){
+            for (String line : lines) {
+                bw.write(line);
+                bw.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Error:" + e.getMessage());
-
+            e.printStackTrace();
         }
+
     }
 }
